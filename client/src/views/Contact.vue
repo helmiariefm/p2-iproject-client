@@ -18,7 +18,7 @@
           </div>
         </a>
         <a href='https://www.instagram.com/cpp.cpw/' target='_blank' rel='noreferrer'>
-          <div id='ig' class='flex gap-3 border-2 border-white rounded-md w-80 m-2 hover:bg-gradient-to-r from-ig1 via-ig2 to-ig3 hover:ease-in-out duration-700 hover:duration-700 transition-all'>            
+          <div id='ig' class='flex gap-3 border-2 border-white rounded-md w-80 m-2 hover:bg-gradient-to-r from-ig1 via-ig2 to-ig3 ease-in-out duration-700 hover:duration-700 transition-all'>            
             <img src='../assets/ig.png' alt="instagram" class='w-9 h-9 m-2'/>
             <p class='py-1 text-3xl'>@cpp.cpw</p>            
           </div>

@@ -41,11 +41,22 @@ const router = createRouter({
       component: Sampul
     },
     {
-      path: '/mainpage',
-      name: 'mainpage',
+      path: '/:invitationName',
+      name: 'invitationName',
       component: MainPage
     } 
   ]
+})
+
+router.beforeEach((to, _, next) => {
+  const isLogin = localStorage.access_token
+  if(to.name == 'invitation-form' && !isLogin){
+    next('/login')
+  } else if(to.name == 'login' && isLogin){
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router

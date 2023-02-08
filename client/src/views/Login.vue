@@ -34,7 +34,7 @@
                 })
             },
             callback(res){
-                console.log(res, '<<<< RES GOOGLE LOGIN');
+                // console.log(res, '<<<< RES GOOGLE LOGIN');
                 this.googleLogin(res)
             }
         },
@@ -78,7 +78,7 @@
                     <input v-model="password" type="password" placeholder="Enter your password..." class="text-[#1e242b] border-2 rounded-md w-full h-11 p-2 mb-3 bg-slate-100 dark:border-gray-500">
                                         
 
-                    <Button size="large" label="Sign Up"/>
+                    <Button size="large" label="Sign Up"/>                    
 
                     <!-- <button type="submit" class="bg-primary-btn dark:bg-dark-btn text-white font-bold w-full h-14 rounded-3xl">Sign Up</button> -->
                 </form>
