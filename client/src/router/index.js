@@ -44,7 +44,7 @@ const router = createRouter({
       path: '/mainpage',
       name: 'mainpage',
       component: MainPage
-    }
+    } 
   ]
 })
 
