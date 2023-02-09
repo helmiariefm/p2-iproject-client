@@ -4,7 +4,6 @@ import Buy from '../views/Buy.vue'
 import Contact from '../views/Contact.vue'
 import Login from '../views/Login.vue'
 import InvitationForm from '../views/InvitationForm.vue'
-import Sampul from '../views/invitations/Sampul.vue'
 import MainPage from '../views/invitations/MainPage.vue'
 
 const router = createRouter({
@@ -34,11 +33,6 @@ const router = createRouter({
       path: '/invitation-form',
       name: 'invitation-form',
       component: InvitationForm
-    },
-    {
-      path: '/cpwcpp',
-      name: 'cpwcpp',
-      component: Sampul
     },
     {
       path: '/:invitationName',

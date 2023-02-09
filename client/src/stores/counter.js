@@ -1,11 +1,14 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 
 export const useCounterStore = defineStore('counter', {
   state(){
     return {
-      server: 'http://localhost:3000',
+      // server: 'http://localhost:3000',
+      server: 'https://violet-fear-production.up.railway.app',
       isLogin: false,
       quotes: [],
       invitationDetail: [],
@@ -13,7 +16,8 @@ export const useCounterStore = defineStore('counter', {
       month:[],
       year: [],
       tanggal: [],
-      dateOnly: []
+      dateOnly: [],
+      cek: []
     }
   },
   actions: {
@@ -26,9 +30,22 @@ export const useCounterStore = defineStore('counter', {
           data: form
         })
         // console.log(data, '<<<<< ')
-        this.router.replace({name: 'home'})        
+        Toastify({
+          text: "Successful register, please login",
+          duration: 3000                
+        }).showToast();
+        this.router.replace({name: 'login'})
       } catch (err) {
-        console.log(err)
+        // console.log(err)
+        const errMsg = err.response.data.message[0].message        
+        Toastify({
+          text: `${err.response.status} ${err.code}: ${errMsg}`,
+          duration: 5000,
+          close: true,
+          style: {
+              background: "linear-gradient(to right, #d45353, #ed9daa)",
+            }
+        }).showToast();
       }
     },
 
@@ -42,15 +59,33 @@ export const useCounterStore = defineStore('counter', {
         localStorage.setItem('access_token', data.access_token)
         this.isLogin = true
         this.router.push('/')
+        Toastify({
+          text: "Logged in",
+          duration: 3000                
+        }).showToast();
+        this.router.replace({name: 'home'})
       } catch (err) {
-        console.log(err)
+        const errMsg = err.response.data.message[0].message        
+        Toastify({
+          text: `${err.response.status} ${err.code}: ${errMsg}`,
+          duration: 5000,
+          close: true,
+          style: {
+              background: "linear-gradient(to right, #d45353, #ed9daa)",
+            }
+        }).showToast();
       }
     },
 
     logout(){
       localStorage.clear('access_token')
       this.isLogin = false
-      this.router.replace('/')     
+      this.router.replace('/')
+      Toastify({
+        text: "Logged out",
+        duration: 3000                
+      }).showToast();
+      this.router.replace({name: 'home'})
     },
 
     async changeBuyStatus(){
@@ -73,12 +108,13 @@ export const useCounterStore = defineStore('counter', {
           headers: {access_token: localStorage.access_token}
         })
 
-        const cb = this.changeBuyStatus   
+        const cb = this.changeBuyStatus
 
         window.snap.pay(data.token, {
-          onSuccess: function(result){
+          onSuccess: (result) => {
             /* You may add your own implementation here */
             cb()
+            this.router.push('/invitation-form')
             alert("payment success!"); console.log(result);
           },
           // onPending: function(result){
@@ -102,7 +138,7 @@ export const useCounterStore = defineStore('counter', {
     async generateQuotes(){
       try {
         const {data} = await axios.get('http://localhost:3000/generatequotes')
-        this.quotes = data
+        this.quotes = data        
       } catch (err) {
         console.log(err)
       }
@@ -117,9 +153,14 @@ export const useCounterStore = defineStore('counter', {
           headers: {access_token: localStorage.access_token},
           data: form
         })
-        // console.log(data, '<<<<< ')
-        this.router.replace({name: 'home'})        
+        this.cek = data
+        this.router.replace({path: `/${form.routeName}`})
+        Toastify({
+          text: "Successful create Invitation",
+          duration: 3000                
+        }).showToast();
       } catch (err) {
+        console.log(this.data, '<<<<< DATA CREATE INVITATION')
         console.log(err)
       }
     },

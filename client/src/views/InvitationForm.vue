@@ -17,7 +17,7 @@
                 resepsiStart: '',
                 resepsiEnd: '',
                 location: '',
-                quote: ''
+                loveQuote: []
             }
         },
         computed: {
@@ -41,7 +41,7 @@
                     resepsiStart: this.resepsiStart,
                     resepsiEnd: this.resepsiEnd,
                     location: this.location,
-                    quote: this.quotes[0].quote
+                    loveQuote: this.quotes[0]?.quote
                 })
             }
         },
@@ -51,7 +51,7 @@
         },
         watch: {
             quotes(newVal, oldVal) {
-                this.quote = this.quotes[0].quote
+                this.loveQuote = this.quotes[0].quote
             }
         }
     }
@@ -152,7 +152,7 @@
                     <!-- <div class="bg-primary h-32 rounded-md border-2 border-solid border-tiktok overflow-y-auto mb-3">
                         <input v-model="quote" class="text-tiktok p-3 text-lg">{{ quotes[0].quote }}</input>
                     </div> -->
-                    <textarea readonly v-model="quote" type="text" class="text-[#1e242b] border-2 rounded-md w-full block overflow-y-auto text-base h-32 p-2 mb-3 bg-slate-100 dark:border-gray-500"></textarea>
+                    <textarea readonly v-model="loveQuote" type="text" class="text-[#1e242b] border-2 rounded-md w-full block overflow-y-auto text-base h-32 p-2 mb-3 bg-slate-100 dark:border-gray-500"></textarea>
 
                     <Button size="large" label="Submit"/>
 

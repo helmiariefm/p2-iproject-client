@@ -153,16 +153,16 @@
                 <h1 class='mx-auto text-primary'>Made With Love by Helmi Arief Muhammad</h1>                    
             </div>
             <div class='flex justify-evenly my-3 md:hidden'>     
-                <div class='flex'>
+                <!-- <div class='flex'>
                     <img src='./assets/ig.png' alt='breakPage' class='h-6 w-6 mr-1 md:-translate-y-14 md:hidden'/>
                     <a href='https://www.instagram.com/rizca.widya/' target='_blank' rel="noreferrer">
                     <h1>rizca.widya</h1>
                     </a>
-                </div>
+                </div> -->
                 <div class='flex'>
                     <img src='./assets/ig.png' alt='breakPage' class='h-6 w-6 mr-1 md:-translate-y-14 md:hidden'/>
                     <a href='https://www.instagram.com/helmiam05/' target='_blank' rel="noreferrer">
-                    <h1>helmiam05</h1>
+                    <h1 class="text-primary">helmiam05</h1>
                     </a>
                 </div>     
             </div>
